@@ -1,0 +1,13 @@
+ .resized-image {
+     width: 80px;
+     /* Set desired width */
+     height: 80px;
+     /* Set desired height */
+     object-fit: cover;
+     /* Makes sure the image fits within the box */
+     border: none;
+     /* Optional: Add a border for styling */
+ }
+ .full-width{
+    width: 100%;
+ }
