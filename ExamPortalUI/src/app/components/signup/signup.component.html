@@ -6,36 +6,36 @@
                 <img src="../../../assets/3135715.png" alt="Resized Image" class="resized-image" />
             </div>
             <div class="col-md-6 offset-md-3">
-                <h1 class="text-center">Register Here</h1>
+                <h2 class="text-center">Register Here</h2>
                 <form (ngSubmit)="formSubmit()" #f="ngForm">
                     <mat-form-field class="full-width" appearance="fill">
                         <mat-label>Username</mat-label>
-                        <input [(ngModel)]="user.userName" name="username" type="text" matInput
+                        <input required [(ngModel)]="user.userName" name="username" type="text" matInput
                             placeholder="Enter Here">
                             <mat-hint>Username must be unique.</mat-hint>
                     </mat-form-field>
                     <mat-form-field class="full-width" appearance="fill">
                         <mat-label>Password</mat-label>
-                        <input [(ngModel)]="user.password" name="password" type="password" matInput
+                        <input required [(ngModel)]="user.password" name="password" type="password" matInput
                             placeholder="Enter password">
                     </mat-form-field>
                     <mat-form-field class="full-width" appearance="fill">
                         <mat-label>First Name</mat-label>
-                        <input [(ngModel)]="user.firstName" name="firstName" type="text" matInput
+                        <input required [(ngModel)]="user.firstName" name="firstName" type="text" matInput
                             placeholder="Enter first name">
                     </mat-form-field>
                     <mat-form-field class="full-width" appearance="fill">
                         <mat-label>Last Name</mat-label>
-                        <input [(ngModel)]="user.lastName" name="lastName" type="text" matInput
+                        <input required [(ngModel)]="user.lastName" name="lastName" type="text" matInput
                             placeholder="Enter last name">
                     </mat-form-field>
                     <mat-form-field class="full-width" appearance="fill">
                         <mat-label>Email</mat-label>
-                        <input [(ngModel)]="user.email" name="email" type="email" matInput placeholder="Enter email">
+                        <input required [(ngModel)]="user.email" name="email" type="email" matInput placeholder="Enter email">
                     </mat-form-field>
                     <mat-form-field class="full-width" appearance="fill">
                         <mat-label>Phone</mat-label>
-                        <input [(ngModel)]="user.phone" name="phone" type="number" matInput placeholder="Enter number">
+                        <input required [(ngModel)]="user.phone" name="phone" type="number" matInput placeholder="Enter number">
                     </mat-form-field>
 
                     <div class="container text-center">
