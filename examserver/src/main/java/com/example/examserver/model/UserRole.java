@@ -1,23 +1,24 @@
 package com.example.examserver.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+
+import javax.persistence.*;
 
 @Entity
 public class UserRole {
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long userRoleId;
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	private User user;
+	
 	@ManyToOne
 	private Role role;
-	
+
+	public UserRole() {
+
+	}
+
 	public Long getUserRoleId() {
 		return userRoleId;
 	}
@@ -41,8 +42,6 @@ public class UserRole {
 	public void setRole(Role role) {
 		this.role = role;
 	}
+	
 
-	private void UserRole() {
-		
-	}
 }

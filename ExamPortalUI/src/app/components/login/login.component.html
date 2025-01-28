@@ -7,15 +7,15 @@
             <div class="col-md-6 offset-md-3">
                 <h2 class="text-center">Login Here</h2>
                 <mat-card>
-                <form #f="ngForm">
+                <form (ngSubmit)="formSubmit()" #f="ngForm">
                     <mat-form-field class="full-width" appearance="fill">
                         <mat-label>Username</mat-label>
-                        <input required [(ngModel)]="user.userName" name="username" type="text" matInput
+                        <input required [(ngModel)]="loginData.username" name="username" type="text" matInput
                             placeholder="Enter username">
                     </mat-form-field>
                     <mat-form-field class="full-width" appearance="fill">
                         <mat-label>Password</mat-label>
-                        <input required [(ngModel)]="user.password" name="password" type="password" matInput
+                        <input required [(ngModel)]="loginData.password" name="password" type="password" matInput
                             placeholder="Enter password">
                     </mat-form-field>
                     <div class="container text-center mb-3">

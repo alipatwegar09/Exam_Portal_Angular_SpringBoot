@@ -15,8 +15,6 @@ import com.example.examserver.service.UserService;
 
 @SpringBootApplication
 public class ExamserverApplication implements CommandLineRunner {
-	@Autowired
-	private UserService userService;
 	public static void main(String[] args) {
 		SpringApplication.run(ExamserverApplication.class, args);
 	}

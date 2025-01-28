@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
 	//creating User
 	@Override
 	 public User createUser(User user, Set<UserRole> userRoles) {
-		  User local =userRepository.findByuserName(user.getUserName());
+		  User local =userRepository.findByusername(user.getUsername());
 		  
 		  if(local!=null) {
 			  System.out.println("User alrady there!!");
@@ -37,9 +37,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User getUser(String userName) {
+	public User getUser(String username) {
 		// TODO Auto-generated method stub
-		return userRepository.findByuserName(userName);
+		return userRepository.findByusername(username);
 	}
 
 	@Override
