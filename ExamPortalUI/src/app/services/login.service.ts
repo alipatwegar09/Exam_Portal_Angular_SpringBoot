@@ -6,9 +6,11 @@ import BASEURL from './helper';
   providedIn: 'root'
 })
 export class LoginService {
-
   constructor(private http:HttpClient) { }
 
+  public getCurrentUser(){
+    return this.http.get(`${BASEURL}/current-user`)
+  }
   public generateToken(loginData:any){
     return this.http.post(`${BASEURL}/generate-token`,loginData)
   }
@@ -16,22 +18,19 @@ export class LoginService {
     localStorage.setItem('token',token);
     return true;
   }
-
-  public isLoggedIn(){
-    let tokenStr = localStorage.getItem('token')
-    if(tokenStr ==undefined || tokenStr=='' || tokenStr==null){
-      return false;
+  public isLoggedIn() {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      let tokenStr = localStorage.getItem("token");
+      return !(tokenStr == undefined || tokenStr == '' || tokenStr == null);
     }
-    else{
-      return true;
-    }
+    return false;
   }
 
-  public logOut(){
+  public logOut() {
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
     return true;
   }
-
   public getToken(){
     return localStorage.getItem('token')
   }
@@ -55,6 +54,6 @@ export class LoginService {
   public getUserRole(){
     let user=this.getUser();
 
-    user.authorities[0].authority;
+    return user.authorities[0].authority;
   }
 }

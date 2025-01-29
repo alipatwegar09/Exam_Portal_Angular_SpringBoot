@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LoginService } from '../../services/login.service';
 import { error } from 'console';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { error } from 'console';
 })
 export class LoginComponent implements OnInit {
 
- constructor(private snack:MatSnackBar,private login:LoginService){}
+ constructor(private snack:MatSnackBar,private login:LoginService,private router:Router){}
 
  ngOnInit(){}
   public loginData = {
@@ -27,11 +28,29 @@ export class LoginComponent implements OnInit {
       this.snack.open("field is required");
       return;
     }
-    this.login.generateToken(this.loginData).subscribe(data=>{
+    this.login.generateToken(this.loginData).subscribe((data:any)=>{
       console.log("success")
       console.log(data)
+
+      this.login.loginUser(data.token);
+
+      this.login.getCurrentUser().subscribe((user:any)=>{
+        this.login.setUser(user);
+
+        if(this.login.getUserRole()=="ADMIN"){
+          this.router.navigate(['/admin'])
+        }else if(this.login.getUserRole()=="NORMAL"){
+          this.router.navigate(['/user-dashboard'])
+        }else{
+          this.login.logOut();
+          location.reload();
+        }
+      })
     },(error)=>{
       console.log(error);
+      this.snack.open("Something went wrong", '', {
+        duration: 3000
+      });
     })
   }
 }
