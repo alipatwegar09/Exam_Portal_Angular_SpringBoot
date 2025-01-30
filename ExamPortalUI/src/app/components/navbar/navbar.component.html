@@ -4,17 +4,17 @@
     </button>
     <span>Exam Portal</span>
     <span class="example-spacer"></span>
-    <a *ngIf="! login.isLoggedIn()" routerLink="/login" mat-icon-button class="me-3 fs-6">
+    <a *ngIf="!isLoggedIn" routerLink="/login" mat-icon-button class="me-3 fs-6">
         Login
     </a>
-<a *ngIf="! login.isLoggedIn()" routerLink="/signup" mat-icon-button class="me-4 fs-6">
+<a *ngIf="!isLoggedIn" routerLink="/signup" mat-icon-button class="me-4 fs-6">
     Register
 </a>
 
-<a (click)="logOut()" *ngIf="login.isLoggedIn()" mat-icon-button class="fs-6" style="margin-right: 50px;">
+<a (click)="logOut()" *ngIf="isLoggedIn" mat-icon-button class="fs-6" style="margin-right: 50px;">
     Logout
 </a>
-<a (click)="logOut()" *ngIf="login.isLoggedIn()" mat-icon-button class="fs-6" style="margin-right: 70px;">
+<a *ngIf="isLoggedIn && user" mat-icon-button class="fs-6" style="margin-right: 70px;">
     {{login.getUser().username}}
 </a>
 </mat-toolbar>

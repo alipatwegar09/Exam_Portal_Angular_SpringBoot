@@ -8,13 +8,21 @@ import { Router } from '@angular/router';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent implements OnInit {
+  isLoggedIn=false;
+  user=null;
   constructor(public login:LoginService,private router:Router){}
   ngOnInit(): void {
-      
+      this.isLoggedIn=this.login.isLoggedIn();
+      this.user=this.login.getUser();
+      this.login.loginSubjectStatus.asObservable().subscribe((data)=>{
+        this.isLoggedIn = this.login.isLoggedIn();
+        this.user = this.login.getUser();
+      })
   }
 
   logOut(){
     this.login.logOut();
-    window.location.reload()
+    this.login.loginSubjectStatus.next(false);
+    this.router.navigate(['login'])
   }
 }

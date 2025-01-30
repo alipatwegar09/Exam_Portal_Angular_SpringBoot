@@ -10,12 +10,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class SignupComponent implements OnInit {
   public user = {
-    userName: '',
+    username: '',
     password: '',
     firstName: '',
     lastName: '',
     email: '',
-    phone: ''
+    phoneNo: ''
   }
 
   constructor(private userService:UserService, private _snack:MatSnackBar) { }
@@ -23,17 +23,32 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void { }
 
   formSubmit() {
-    if(this.user.userName===''){
-      this._snack.open("Username is required!",'',{
-        duration:3000 }
-      );
+    // if(this.user.username===''){
+    //   this._snack.open("Username is required!",'',{
+    //     duration:3000 }
+    //   );
+    //   return;
+    // }
+    if (!this.user.username.trim() ||
+      !this.user.password.trim() ||
+      !this.user.firstName.trim() ||
+      !this.user.lastName.trim() ||
+      !this.user.email.trim() ||
+      !this.user.phoneNo) {
+
+      this._snack.open("All fields are required!", '', {
+        duration: 3000
+      });
       return;
     }
     this.userService.addUser(this.user).subscribe(
-      data=>{
-console.log(data);
-alert('success');
-        this.clearForm();
+      (data)=>{
+        this.user.firstName = '';
+        this.user.lastName = '';
+        this.user.email = '';
+        this.user.username = '';
+        this.user.password = '';
+        this.user.phoneNo = '';
         this._snack.open("User Created Successfully", '', {
           duration: 3000
         });
@@ -48,12 +63,12 @@ alert('success');
   }
   clearForm() {
     this.user = {
-      userName: '',
+      username: '',
       password: '',
       firstName: '',
       lastName: '',
       email: '',
-      phone: ''
+      phoneNo: ''
     };
   }
 

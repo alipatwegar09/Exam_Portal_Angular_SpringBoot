@@ -5,6 +5,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.examserver.helpers.UserFoundException;
 import com.example.examserver.model.User;
 import com.example.examserver.model.UserRole;
 import com.example.examserver.repo.RoleRepository;
@@ -20,11 +21,12 @@ public class UserServiceImpl implements UserService {
 	
 	//creating User
 	@Override
-	 public User createUser(User user, Set<UserRole> userRoles) {
+	 public User createUser(User user, Set<UserRole> userRoles) throws Exception {
 		  User local =userRepository.findByusername(user.getUsername());
 		  
 		  if(local!=null) {
 			  System.out.println("User alrady there!!");
+			  throw new UserFoundException();
 		  }
 		  else {
 			  for(UserRole ur: userRoles) {
