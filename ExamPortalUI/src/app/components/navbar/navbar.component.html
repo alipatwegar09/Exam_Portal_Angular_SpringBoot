@@ -11,10 +11,10 @@
     Register
 </a>
 
-<a (click)="logOut()" *ngIf="isLoggedIn" mat-icon-button class="fs-6" style="margin-right: 50px;">
+<a (click)="logOut()" *ngIf="isLoggedIn"  class="fs-6 me-2"  mat-button>
     Logout
 </a>
-<a *ngIf="isLoggedIn && user" mat-icon-button class="fs-6" style="margin-right: 70px;">
+<a *ngIf="isLoggedIn && user" class="fs-6" routerLink="/admin/profile" mat-button>
     {{login.getUser().username}}
 </a>
 </mat-toolbar>

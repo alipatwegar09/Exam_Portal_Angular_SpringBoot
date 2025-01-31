@@ -55,7 +55,7 @@ export class SignupComponent implements OnInit {
       },
       (error)=>{
         console.log(error);
-        this._snack.open('something went wrong', '', {
+        this._snack.open('Username is already Exist,please try another Username!', '', {
           duration: 3000
         });
       }
