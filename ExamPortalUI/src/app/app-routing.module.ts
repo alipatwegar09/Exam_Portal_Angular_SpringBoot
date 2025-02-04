@@ -9,6 +9,7 @@ import { normalUserGuard } from './services/normal-user.guard';
 import { SidebarComponent } from './pages/admin/sidebar/sidebar.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
+import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
 
 
 const routes: Routes = [
@@ -21,7 +22,8 @@ const routes: Routes = [
   {
     path: 'admin', component: DashboardComponent,canActivate:[adminGuard],children:[
       { path: '', component: WelcomeComponent },
-      { path: 'profile', component:ProfileComponent}
+      { path: 'profile', component:ProfileComponent},
+      {path:'categories',component:ViewCategoriesComponent}
     ]
   },
   {

@@ -1,95 +1,80 @@
 package com.example.examserver.model.exam;
-
-import java.util.LinkedHashSet;
+import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "quiz")
 public class Quiz {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long qid;
-	private String title;
-	
-	private String description;
-	
-private String maxMarks;
-	
-	private String noOfQue;
-	
+    private String title;
+    @Column(length = 5000)
+    private String description;
+    private String maxMarks;
+    private String noOfQuestions;
 	private boolean active=false;
-	
+	//add..
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Category category;
 	
-
-	@OneToMany(mappedBy = "quiz",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "quiz",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	@JsonIgnore
-	private Set<Question> question=new LinkedHashSet<>();
+	private Set<Question>questions=new HashSet<>();
 	
 	public Quiz() {
-		
-	}
 
+	}
 	public Long getQid() {
 		return qid;
 	}
-
 	public void setQid(Long qid) {
 		this.qid = qid;
 	}
-
 	public String getTitle() {
 		return title;
 	}
-
-	public void setTitle(String title) {
-		this.title = title;
+	public void setTittle(String tittle) {
+		this.title = tittle;
 	}
-
 	public String getDescription() {
 		return description;
 	}
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
 	public String getMaxMarks() {
 		return maxMarks;
 	}
-
 	public void setMaxMarks(String maxMarks) {
 		this.maxMarks = maxMarks;
 	}
-
-	public String getNoOfQue() {
-		return noOfQue;
+	public String getNoOfQuestions() {
+		return noOfQuestions;
 	}
-
-	public void setNoOfQue(String noOfQue) {
-		this.noOfQue = noOfQue;
+	public void setNoOfQuestions(String noOfQuestions) {
+		this.noOfQuestions = noOfQuestions;
 	}
-
 	public boolean isActive() {
 		return active;
 	}
-
 	public void setActive(boolean active) {
 		this.active = active;
+	}
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+	public Set<Question> getQuestions() {
+		return questions;
+	}
+	public void setQuestions(Set<Question> questions) {
+		this.questions = questions;
 	}
 	
 }
