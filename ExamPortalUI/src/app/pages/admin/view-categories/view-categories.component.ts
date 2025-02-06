@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoryService } from '../../../services/category.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-view-categories',
@@ -8,18 +10,23 @@ import { Component, OnInit } from '@angular/core';
 export class ViewCategoriesComponent implements OnInit {
   categories=[
     {
-      cid: 43,
-      title:'Programming',
-      description:'efgji wirfhto gr ihwr hgftriog rgrwhih rgwigwhr hihweftgrh grwh ehrwgh'
-    },
-    {
-      cid: 43,
-      title: 'Aptitude',
-      description: 'efgji wirfhto gr ihwr hgftriog rgrwhih rgwigwhr hihweftgrh grwh ehrwgh'
+      title:'',
+      description:''
     }
   ]
    
-  constructor(){}
+  constructor(private _category:CategoryService,private _snack:MatSnackBar){}
 
-  ngOnInit(){}
+  ngOnInit(){
+    this._category.categories().subscribe((data:any)=>{
+      this.categories=data;
+      console.log(data)
+    },
+    (error)=>{
+      this._snack.open("Error in loading data", '', {
+        duration: 3000
+      });
+    }
+  )
+  }
 }
