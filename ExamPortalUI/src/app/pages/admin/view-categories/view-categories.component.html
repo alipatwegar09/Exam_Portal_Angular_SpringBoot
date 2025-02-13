@@ -1,6 +1,8 @@
 <mat-card>
     <mat-list>
-        <div mat-subheader>All Categories</div>
+            <mat-toolbar>
+                <span>All Categories</span>
+            </mat-toolbar>
         <mat-list-item *ngFor="let c of categories">
             <mat-icon matListItemIcon>category</mat-icon>
             <div matListItemTitle>

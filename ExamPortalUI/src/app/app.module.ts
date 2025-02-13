@@ -10,7 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { SignupComponent } from './components/signup/signup.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { FormsModule } from '@angular/forms';
+import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { MatCardModule } from '@angular/material/card';
@@ -26,7 +26,11 @@ import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
 import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
 import { ViewQuizzesComponent } from './pages/admin/view-quizzes/view-quizzes.component';
-
+import { AddQuizzesComponent } from './pages/admin/add-quizzes/add-quizzes.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
+import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +44,9 @@ import { ViewQuizzesComponent } from './pages/admin/view-quizzes/view-quizzes.co
     WelcomeComponent,
     ViewCategoriesComponent,
     AddCategoryComponent,
-    ViewQuizzesComponent
+    ViewQuizzesComponent,
+    AddQuizzesComponent,
+    UpdateQuizComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +60,11 @@ import { ViewQuizzesComponent } from './pages/admin/view-quizzes/view-quizzes.co
     MatCardModule,
     MatToolbarModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatSlideToggleModule,
+    MatSelectModule,
+    MatOptionModule,
+    ReactiveFormsModule
   ],
   exports: [
 
