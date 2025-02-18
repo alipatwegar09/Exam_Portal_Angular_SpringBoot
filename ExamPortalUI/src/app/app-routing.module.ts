@@ -14,6 +14,7 @@ import { AddCategoryComponent } from './pages/admin/add-category/add-category.co
 import { ViewQuizzesComponent } from './pages/admin/view-quizzes/view-quizzes.component';
 import { AddQuizzesComponent } from './pages/admin/add-quizzes/add-quizzes.component';
 import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.component';
+import { ViewQuestionsComponent } from './pages/admin/view-questions/view-questions.component';
 
 
 const routes: Routes = [
@@ -32,6 +33,7 @@ const routes: Routes = [
       { path: 'quizzes', component: ViewQuizzesComponent },
       { path: 'add-quizzes', component: AddQuizzesComponent },
       { path: 'quiz/:qid', component: UpdateQuizComponent },
+      { path: 'view-questions/:qid/:title', component: ViewQuestionsComponent },
     ]
   },
   {
