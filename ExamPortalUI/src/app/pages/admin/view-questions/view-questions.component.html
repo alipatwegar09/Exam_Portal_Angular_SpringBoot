@@ -1,7 +1,7 @@
 <mat-toolbar class="mt-4">
     <span>Add Questions to {{qTitle}}</span>
 </mat-toolbar>
-<button mat-raised-button color="accent" class="text-center">Add New Question</button>
+<button mat-raised-button color="accent" class="text-center" [routerLink]="'/admin/add-questions/'+qId+'/'+qTitle">Add New Question</button>
 <div class="bootstrap-wrapper">
     <div class="row">
         <div class="col-md-12">
@@ -33,6 +33,10 @@
                         <p><b>Correct Answer: {{q.answer}}</b></p>
 
                 </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button class="me-2" color="primary">Update</button>
+                        <button mat-raised-button (click)="deleteQuestion(q.queId)" color="accent">Delete</button>
+                </mat-card-actions>
             </mat-card>
         </div>
     </div>

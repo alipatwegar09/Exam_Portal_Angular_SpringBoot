@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { QuestionService } from '../../../services/question.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-view-questions',
@@ -12,6 +13,7 @@ export class ViewQuestionsComponent implements OnInit {
   qTitle:any;
   questions=[
     {
+      queId:1,
     content:'',
     option1:'',
     option2:'',
@@ -19,7 +21,7 @@ export class ViewQuestionsComponent implements OnInit {
     option4:'',
     answer:''
   }]
-  constructor(private _route:ActivatedRoute,private _question:QuestionService){}
+  constructor(private _route:ActivatedRoute,private _question:QuestionService,private _snack:MatSnackBar){}
   ngOnInit(){
     this.qId=this._route.snapshot.params['qid'];
     this.qTitle=this._route.snapshot.params['title']
@@ -30,5 +32,18 @@ export class ViewQuestionsComponent implements OnInit {
       console.log(error)
     })
     console.log(this.qId,this.qTitle)
+  }
+
+  deleteQuestion(QueId:any){
+    this._question.deleteQuestionofQuiz(QueId).subscribe((data)=>{
+      this.questions = this.questions.filter((question) => question.queId != QueId)
+      this._snack.open("Question deleted Successfully", '', {
+        duration: 3000
+      })
+    }, (error) => {
+      this._snack.open("Something went wrong", '', {
+        duration: 3000
+      })
+    })
   }
 }

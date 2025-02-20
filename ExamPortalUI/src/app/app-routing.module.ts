@@ -15,6 +15,7 @@ import { ViewQuizzesComponent } from './pages/admin/view-quizzes/view-quizzes.co
 import { AddQuizzesComponent } from './pages/admin/add-quizzes/add-quizzes.component';
 import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.component';
 import { ViewQuestionsComponent } from './pages/admin/view-questions/view-questions.component';
+import { AddQuestionsComponent } from './pages/admin/add-questions/add-questions.component';
 
 
 const routes: Routes = [
@@ -34,7 +35,8 @@ const routes: Routes = [
       { path: 'add-quizzes', component: AddQuizzesComponent },
       { path: 'quiz/:qid', component: UpdateQuizComponent },
       { path: 'view-questions/:qid/:title', component: ViewQuestionsComponent },
-    ]
+      { path: 'add-questions/:qid/:title', component: AddQuestionsComponent }
+    ] 
   },
   {
     path: 'user-dashboard', component: UserDashboardComponent, canActivate: [normalUserGuard]
