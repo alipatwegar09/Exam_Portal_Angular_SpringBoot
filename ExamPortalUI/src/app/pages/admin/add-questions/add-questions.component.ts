@@ -9,7 +9,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrl: './add-questions.component.css'
 })
 export class AddQuestionsComponent {
-
   qId:any;
   qTitle:any;
   question={

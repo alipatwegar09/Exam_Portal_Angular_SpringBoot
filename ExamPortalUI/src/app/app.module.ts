@@ -33,6 +33,8 @@ import { MatOptionModule } from '@angular/material/core';
 import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.component';
 import { ViewQuestionsComponent } from './pages/admin/view-questions/view-questions.component';
 import { AddQuestionsComponent } from './pages/admin/add-questions/add-questions.component';
+import { UserSidebarComponent } from './pages/user/user-sidebar/user-sidebar.component';
+import { LoadQuizComponent } from './pages/user/load-quiz/load-quiz.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +52,9 @@ import { AddQuestionsComponent } from './pages/admin/add-questions/add-questions
     AddQuizzesComponent,
     UpdateQuizComponent,
     ViewQuestionsComponent,
-    AddQuestionsComponent
+    AddQuestionsComponent,
+    UserSidebarComponent,
+    LoadQuizComponent
   ],
   imports: [
     BrowserModule,

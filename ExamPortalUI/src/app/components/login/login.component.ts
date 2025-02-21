@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['admin'])
           this.login.loginSubjectStatus.next(true);
         }else if(this.login.getUserRole()==="Normal"){
-          this.router.navigate(['user-dashboard'])
+          this.router.navigate(['user-dashboard/0'])
           this.login.loginSubjectStatus.next(true);
         }else{
           this.login.logOut();
