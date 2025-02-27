@@ -11,9 +11,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
 
+import com.example.examserver.model.exam.Category;
 import com.example.examserver.model.exam.Quiz;
 import com.example.examserver.service.QuizService;
+
 
 @RestController
 @CrossOrigin("*")
@@ -21,7 +24,7 @@ import com.example.examserver.service.QuizService;
 public class QuizController {
 	@Autowired
 	private QuizService quizService;
-	@PostMapping("/")
+	@PostMapping
 	public ResponseEntity<?> addQuiz(@RequestBody Quiz quiz){
 		return ResponseEntity.ok(this.quizService.addQuiz(quiz));
 	}
@@ -43,6 +46,11 @@ public class QuizController {
 	public void deleteQuiz(@PathVariable("qid") Long qid) {
 		this.quizService.deleteQuiz(qid);
 	}
-	
+	@GetMapping("/category/{cid}")
+	public List<Quiz> getQuizzesofCategory(@PathVariable("cid") Long cid){
+		Category category=new Category();
+		category.setCid(cid);
+		return this.quizService.getQuizzesOfcategory(category);
+	}
 	
 }
