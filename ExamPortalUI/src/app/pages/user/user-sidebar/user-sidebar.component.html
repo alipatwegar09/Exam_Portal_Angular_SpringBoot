@@ -1,13 +1,13 @@
 <mat-card>
     <mat-action-list>
         <div mat-subheader>Menu</div>
-        <button mat-list-item >
+        <button mat-list-item routerLink="/user-dashboard/0" >
             <mat-icon matListItemIcon> house</mat-icon>Home
         </button>
-        <button mat-list-item>
+        <button mat-list-item routerLink="/user-dashboard/0">
             <mat-icon matListItemIcon> quiz</mat-icon>All Quizzes
         </button>
-        <button mat-list-item *ngFor="let c of categories">
+        <button [routerLink]="'/user-dashboard/'+c.cid" mat-list-item *ngFor="let c of categories">
             <mat-icon matListItemIcon> quiz</mat-icon>{{c.title}}
         </button>
     </mat-action-list>

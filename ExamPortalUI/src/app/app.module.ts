@@ -35,6 +35,10 @@ import { ViewQuestionsComponent } from './pages/admin/view-questions/view-questi
 import { AddQuestionsComponent } from './pages/admin/add-questions/add-questions.component';
 import { UserSidebarComponent } from './pages/user/user-sidebar/user-sidebar.component';
 import { LoadQuizComponent } from './pages/user/load-quiz/load-quiz.component';
+import { InstructionsComponent } from './pages/user/instructions/instructions.component';
+import { StartComponent } from './pages/user/start/start.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +58,9 @@ import { LoadQuizComponent } from './pages/user/load-quiz/load-quiz.component';
     ViewQuestionsComponent,
     AddQuestionsComponent,
     UserSidebarComponent,
-    LoadQuizComponent
+    LoadQuizComponent,
+    InstructionsComponent,
+    StartComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +78,8 @@ import { LoadQuizComponent } from './pages/user/load-quiz/load-quiz.component';
     MatSlideToggleModule,
     MatSelectModule,
     MatOptionModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatProgressSpinnerModule
   ],
   exports: [
 

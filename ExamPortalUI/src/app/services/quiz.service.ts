@@ -24,4 +24,7 @@ export class QuizService {
   public updateQuiz(quiz:any){
     return this.http.put(`${BASEURL}/quiz/`, quiz)
   }
+  public geQuizzesOfcategory(cid:any){
+    return this.http.get(`${BASEURL}/quiz/category/${cid}`)
+  }
 }
